@@ -3,6 +3,108 @@
 <html>
     <head>
         <title>Order form for community library</title>
+        <style>
+            body 
+            {
+                background-color: #bdc5c7 ;
+                padding: 40px;
+                color: solid black;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-image: url('https://images.pexels.com/photos/6334070/pexels-photo-6334070.jpeg');
+                background-size: cover;
+                background-repeat: no-repeat;                           /*prevents the image from repeating incase it is too small to fit in the page*/
+                background-attachment: fixed;                          /*keeps image fixed while you scroll*/
+            
+            }
+
+            form
+            {
+                background-color: whitesmoke;
+                padding: 20px;
+                border-radius: 8px;
+                width: auto;
+                box-shadow: 0 4px 15px rgba(5, 5, 5, 0.1);
+                max-width: 800px;
+                
+
+            }
+            h2
+            {
+                color:  #2c3e50;
+                text-align: center;
+                border-bottom: 2px solid #47b1f7;
+                padding-bottom: 10px;
+            }
+
+            h3
+            {
+                color: #2b5f82;
+                margin-top: 25px;
+                border-left: 4px solid #3c7296;
+                padding-left: 10px;
+            }
+
+            input[type="text"],
+            input[type="email"]
+            {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                border: 1px solid white;
+                border-radius: 4px;
+                box-sizing: border-box; /* Ensures padding doesn't break width */
+                cursor: default;
+            }
+            input[type="checkbox"],
+            input[type="radio"]
+            {
+                margin-bottom: 20px;
+                cursor: pointer;
+            }
+            label
+            {
+                cursor: pointer;
+            }
+            button
+            {
+                background-color: darkslategrey;
+                color: white;
+                padding: 10px;
+                border-radius: 4px;
+                font-size: medium;
+            }
+            button:hover
+            {
+                background-color: #031724;
+
+            }
+
+            a 
+            {
+                border: 1px solid black;
+                padding: 10px;
+                background-color: whitesmoke;
+                margin: 10px;
+                border-radius: 4px;
+                text-decoration: none;
+
+            }
+
+            a:hover 
+            {
+                color: rgb(153, 127, 127);
+                text-decoration: underline;
+                background-color: #6e828f;
+                cursor: pointer;
+            }
+            a:visited
+            {
+                color: #2c3e50;
+                text-decoration: underline;
+            }
+        </style>
     </head>
 
     <body>
@@ -12,13 +114,14 @@
 
             <h3> Borrower Identification</h3><br>
 
-            <label for="b_name">Full Name:</label>
+            <label for="b_name">Full Name:</label><br>
             <input type="text" id="b_name" name="borrower_name" placeholder="Full Name"><br><br>
 
-            <label for="email_address">Email Address:</label>
+            <label for="email_address">Email Address:</label><br>
             <input type="email" name="borrower_email" id="email_address" placeholder="Email Address"><br><br>
 
-            <label for="library_id">library ID:</label>
+            <label for="library_id">Library ID:</label><br>
+    
             <input type="text" name="library_id" id="library_id" placeholder="library identification"><br><br>
 
             <h3>Resource Selection</h3>
@@ -29,6 +132,11 @@
             <label for="author"><strong>Book Author / Writer</strong></label><br>
             <label for="book_author">Enter the Book Author:</label>
             <input type="text" name="book_author" id="book_author" placeholder="e.g David C. Lay"><br><br>
+
+            <label for="edition"><strong>Book Edition</strong></label><br>
+            <label for="book_edition" title="Enter book edition for easy searching">Enter the Book Edition</label>
+            <input type="text" name="edition" id="book_edition" placeholder="e.g 6th Edition"><br><br>
+
             
             
             
@@ -63,7 +171,7 @@
             <input type="checkbox" name="extra_services" id="audio_sync_email" value="audio_sync">
             <label for="audio_sync_email" title="Receive digital book audio link via email">Audio Sync</label><br><br>
 
-            <button type="submit">Complete Book Request</button><br><br>
+            <button type="submit" title="Click here to complete your request">Complete Book Request</button><br><br>
         </form>
         <a href="community_library.html" target="_blank" title="click here to go back to the community book haven page.">Click Here</a> 
     </body>

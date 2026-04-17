@@ -6,6 +6,30 @@ communiy library page
 <html>
     <head>
         <title>Community Library Webpage</title>
+        <style>
+            table
+            {
+                border-bottom: 5px sienna;
+                width: 100%;
+                max-width: 800px;
+                color: cornflowerblue;
+                background-color: bisque;
+                border-collapse: collapse;
+                text-align: left;
+            }
+            tr
+            {
+                border-bottom: 3px solid rgb(197, 152, 131);
+            }
+            tr:nth-child(even)
+            {
+                background-color: burlywood;
+            }
+            tr:hover 
+            {
+                background-color: rgb(245, 188, 168);
+            }
+        </style>
         
     </head>
 
@@ -50,7 +74,7 @@ communiy library page
         </ul>
 
         <h2 style="color: darkslateblue;text-decoration: underline;">Table showing the opening hours and days</h2>
-        <table  border="1" cellpadding="10"  cellspacing="0" style="border-collapse: collapse; width: 800px;text-align: left; background-color: white;">
+        <table >
             <tr>
                 <th>Day</th>
                 <th>Opening Hours</th>

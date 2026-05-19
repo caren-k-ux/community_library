@@ -3,113 +3,13 @@
 <html>
     <head>
         <title>Order form for community library</title>
-        <style>
-            body 
-            {
-                background-color: #bdc5c7 ;
-                padding: 40px;
-                color: solid black;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                background-image: url('https://images.pexels.com/photos/6334070/pexels-photo-6334070.jpeg');
-                background-size: cover;
-                background-repeat: no-repeat;                           /*prevents the image from repeating incase it is too small to fit in the page*/
-                background-attachment: fixed;                          /*keeps image fixed while you scroll*/
-            
-            }
-
-            form
-            {
-                background-color: whitesmoke;
-                padding: 20px;
-                border-radius: 8px;
-                width: auto;
-                box-shadow: 0 4px 15px rgba(5, 5, 5, 0.1);
-                max-width: 800px;
-                
-
-            }
-            h2
-            {
-                color:  #2c3e50;
-                text-align: center;
-                border-bottom: 2px solid #47b1f7;
-                padding-bottom: 10px;
-            }
-
-            h3
-            {
-                color: #2b5f82;
-                margin-top: 25px;
-                border-left: 4px solid #3c7296;
-                padding-left: 10px;
-            }
-
-            input[type="text"],
-            input[type="email"]
-            {
-                width: 100%;
-                padding: 10px;
-                margin-top: 10px;
-                border: 1px solid white;
-                border-radius: 4px;
-                box-sizing: border-box; /* Ensures padding doesn't break width */
-                cursor: default;
-            }
-            input[type="checkbox"],
-            input[type="radio"]
-            {
-                margin-bottom: 20px;
-                cursor: pointer;
-            }
-            label
-            {
-                cursor: pointer;
-            }
-            button
-            {
-                background-color: darkslategrey;
-                color: white;
-                padding: 10px;
-                border-radius: 4px;
-                font-size: medium;
-            }
-            button:hover
-            {
-                background-color: #031724;
-
-            }
-
-            a 
-            {
-                border: 1px solid black;
-                padding: 10px;
-                background-color: whitesmoke;
-                margin: 10px;
-                border-radius: 4px;
-                text-decoration: none;
-
-            }
-
-            a:hover 
-            {
-                color: rgb(153, 127, 127);
-                text-decoration: underline;
-                background-color: #6e828f;
-                cursor: pointer;
-            }
-            a:visited
-            {
-                color: #2c3e50;
-                text-decoration: underline;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        
     </head>
 
-    <body>
-        
-        <form action="https://httpbin.org/post" method="post" target="_blank">
+    <body id="order_page">
+        <div>
+        <form action="https://httpbin.org/post" method="post" target="_blank" id="library_form">
             <h2>Community Book Haven: Book Request and Loan Processing</h2>
 
             <h3> Borrower Identification</h3><br>
@@ -171,8 +71,88 @@
             <input type="checkbox" name="extra_services" id="audio_sync_email" value="audio_sync">
             <label for="audio_sync_email" title="Receive digital book audio link via email">Audio Sync</label><br><br>
 
-            <button type="submit" title="Click here to complete your request">Complete Book Request</button><br><br>
+            <button type="button" onclick="addBorrowerRequestInfo()" title="click here to add your information on the table below">Add Borrower Information</button>
         </form>
+        </div>
+        <div id="style_table">
+            <h2>Book Request Information Table</h2>
+            <table  class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email Address</th>
+                        <th>Library ID</th>
+                        <th>Book Title</th>
+                        <th>Book Author</th>
+                        <th>Book Edition</th>
+                        <th>Book Category</th>
+                        <th>Extra Services</th>
+
+                    </tr>
+                </thead>
+                <tbody id="table_data">
+                </tbody>
+            </table>
+            <p id="message"></p>
+
+            <script>
+                function addBorrowerRequestInfo()
+                {
+                    let borrowerName = document.getElementById("b_name").value;
+                    let emailAddress = document.getElementById("email_address").value;
+                    let libraryIdentification = document.getElementById("library_id").value;
+                    let bookTitle = document.getElementById("book_title").value;
+                    let bookAuthor = document.getElementById("book_author").value;
+                    let bookEdition = document.getElementById("book_edition").value;
+                    const bookCategory = document.querySelector('input[name ="category"]:checked')?.value || "None";
+                    const extraServices = document.querySelectorAll('input[name="extra_services"]:checked');
+                    const serviceList = Array.from(extraServices).map(cb => cb.value).join(", ");
+
+
+                    //get table
+                    let table = document.getElementById("table_data");
+
+                    //create new row
+                    let newRow = table.insertRow(-1);
+
+                    //create cells
+                    let cell1 = newRow.insertCell(0);
+                    let cell2 = newRow.insertCell(1);
+                    let cell3 = newRow.insertCell(2);
+                    let cell4 = newRow.insertCell(3);
+                    let cell5 = newRow.insertCell(4);
+                    let cell6 = newRow.insertCell(5);
+                    let cell7 = newRow.insertCell(6);
+                    let cell8 = newRow.insertCell(7);
+
+                    //Add values to cells
+                    cell1.innerHTML = borrowerName;
+                    cell2.innerHTML = emailAddress;
+                    cell3.innerHTML = libraryIdentification;
+                    cell4.innerHTML = bookTitle;
+                    cell5.innerHTML = bookAuthor;
+                    cell6.innerHTML = bookEdition;
+                    cell7.innerHTML = bookCategory;
+                    cell8.innerHTML = serviceList || "None";
+
+                    //display success message
+                    document.getElementById("message").innerHTML = "Borrower Request Information Added Successfully!!";
+                    
+                    //clear form fields
+                    document.getElementById("library_form").reset();
+                }
+
+
+            </script>
+
+        </div>
+        <div class="submit_form_container">
+            <form action="https://httpbin.org/post" method="post" target="_blank">
+                <button type="submit" class="final_button" title="Click here to complete your request to the library">
+                    Complete Book Request & Submit
+                </button>
+            </form>
+        </div>
         <a href="community_library.html" target="_blank" title="click here to go back to the community book haven page.">Click Here</a> 
     </body>
 </html>

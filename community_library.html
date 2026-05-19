@@ -6,80 +6,107 @@ communiy library page
 <html>
     <head>
         <title>Community Library Webpage</title>
-        <style>
-            table
-            {
-                border-bottom: 5px sienna;
-                width: 100%;
-                max-width: 800px;
-                color: cornflowerblue;
-                background-color: bisque;
-                border-collapse: collapse;
-                text-align: left;
-            }
-            tr
-            {
-                border-bottom: 3px solid rgb(197, 152, 131);
-            }
-            tr:nth-child(even)
-            {
-                background-color: burlywood;
-            }
-            tr:hover 
-            {
-                background-color: rgb(245, 188, 168);
-            }
-        </style>
+        <link rel="stylesheet" href="style.css"  type="text/css">
+       
         
     </head>
 
-    <body style="background-color: #bdc5c7;font-family: Arial, Helvetica, sans-serif; margin: 40px;">
-        <h1 title="Your Neighbourhood Gateway to Knowledge" style="text-align: center;color: darkblue;">Community Book Haven</h1>
+    <body style="font-family: Arial, Helvetica, sans-serif; margin: 40px">
+        <div id="heading">
+        <h1 title="Your Neighbourhood Gateway to Knowledge" style="text-align: center;">Community Book Haven</h1>
+        </div>
 
-        <h3 style="color: darkslateblue;" title="welcome to our community book haven webpage">Welcome</h3>
+        <div id="welcome_section" class="content_container">
+        <h3  title="welcome to our community book haven webpage">Welcome</h3>
         <p>A welcoming space where the community can discover books and share knowledge.<br>
         Our purpose is to provide a quiet, resource-rich environment that supports academic success, professional development, and lifelong learning for everyone in the neighbourhood.<br>
         Whether you are a student researching for a project or a lifelong learner seeking new ideas, we provide the tools and spaces you need to thrive.
         </p>
+        </div>
 
-        <h2 style="color: darkslateblue; text-decoration: underline;">Library Environment</h2>
+        <div id="image_section" class="content_container">
+        <h2>Library Environment</h2>
         <p>Our library is designed to give a conducive, comfortable and distraction free environment for the community members</p>
+        <div class="library_image">
         <p><img src="https://images.pexels.com/photos/6334064/pexels-photo-6334064.jpeg" alt="Community Book Haven Interior" title="This is the image of our library environment." width="100%" height="auto"></p>
-
-        <h2 style="color: darkslateblue;text-decoration: underline;">Recommended Learning Resources</h2>
+        </div>
+        </div>
+        <div id="resources_recommendation" class="content_container">
+        <h2>Recommended Learning Resources</h2>
         <p>To support your research and skill-building beyond our physical collection, we recomend  looking up external educational platforms. Visit our partner website to  thousands of free courses and tutorials</p>
         <ul>
             <li>For Academic Books and Research, use our <a href="https://app.myloft.xyz/browse/home" target="_blank" title="This link Leads to MYLOFT Digital Library">MYLOFT Digital Library</a></li>
         
             <li>For Skill-Building and Tutorials Visit  the <a href="https://www.khanacademy.org" target="_blank" title="This link leads to the Khan Academy Website">Khan Academy Learning Portal </a> for thousands of free courses and tutorials.</li>
         </ul>
+        </div>
 
-        <h2 style="text-decoration: underline; color: darkslateblue;">Steps of  Becoming a Community Book Haven Member</h2>
+        <div id="membership_steps" class="content_container">
+        <h2>Steps of  Becoming a Community Book Haven Member</h2>
         <ol title="This is an ordered list showing the process of becoming a library member">
             <li>Visit our reception desk during library operating hours.</li>
             <li>Provide a valid form of identification such as National ID or Student ID.</li>
             <li>Complete the membership application form with your contact details.</li>
             <li>Receive your official membership card to  begin your learning and growing journey with us.</li>
         </ol>
+        </div>
 
-        <h2 style="color: darkslateblue; text-decoration: underline;">Library Resources and Services</h2>
+        <div id="membership_registration" class="content_container">
+            <h2>Library Membership</h2>
+            <p>Would You like to register for an optional Community Membership card?</p>
+            <input type="radio" name="want_to_register" id="no_registration" value="no" checked onclick="toggleRegistrationForm()">
+            <label for="no_registration">No, Just Browsing</label> <br><br>
+
+            <input type="radio" name="want_to_register" id="yes_registration" value="yes" onclick="toggleRegistrationForm()">
+            <label for="yes_registration"> Yes, I want to register!</label><br><br>
+
+            <form id="registration_form" class="library_form" style="display: none;">
+                <label for="member_details"><strong>Member Details:</strong></label><br><br>
+                <label for="member_name">Full Name</label>
+                <input type="text" id="member_name" placeholder="Enter your full name" required><br><br>
+
+                <label for="member_email">Email Address:</label>
+                <input type="email" id="member_email" placeholder="Enter Your email Address" required><br><br>
+
+                <label for="memebership"> <strong>Communinty Library Membership Type:</strong></label><br><br>
+                <input type="radio" name="member_type" id="resident" value="Resident" checked>
+                <label for="resident_type">Local Resident</label><br><br>
+                <input type="radio" name="member_type" id="visitor" value="Visitor">
+                <label for="visitor">Guest / Visitor</label><br><br>
+
+                <input type="radio" id="under_age" name="member_type" value="junior_member">
+                <label for="under_age">Junior Member (under 18) </label><br><br>
+                <button type="submit" title="Click here to complete your registration, or forever hold your peace!">Register Now</button>
+               
+
+            </form>
+            <p id="registration_msg"></p>
+            
+        </div>
+
+        </div>
+        <div id="resources_information" class="content_container">
+        <h2>Library Resources and Services</h2>
 
         <ul>
             <li>Free high-speed WiFi for research and digital projects.</li>
             <li>Dedicated focused study areas for focused learning.</li>
             <li>Printing and scanning services for student assignments.</li>
             <li>Community workshops and peer to peer tutoring sessions.</li>
-            <li>Access to a wide collection of academic an·d recreational books.</li>
+            <li>Access to a wide collection of academic and recreational books.</li>
 
         </ul>
 
-        <h2 style="color: darkslateblue;text-decoration: underline;">Table showing the opening hours and days</h2>
-        <table >
+        <h2>Table showing the opening hours and days</h2>
+        <table  class="table">
+            <thead>
             <tr>
                 <th>Day</th>
                 <th>Opening Hours</th>
             </tr>
+            </thead>
 
+            <tbody>
             <tr>
                 <td>Monday-Friday</td>
                 <td>9.00AM-8.00PM</td>
@@ -94,10 +121,67 @@ communiy library page
                 <td>Sunday</td>
                 <td>Closed</td>
             </tr>
+            </tbody>
 
         </table>
+        </div>
 
-        <p>Ready to borrow?<a href="order_form.html" title="Go to the Book request form">Place an order here</a></p>
+        <p class="order_form_link">Ready to borrow?<a href="order_form.html" title="Go to the Book request form">Place an order here</a></p>
+
+        <script>
+            function setDynamicGreeting()
+            {
+                const hour = new Date().getHours();
+                const greetingHeader = document.querySelector("#heading h1");
+                if (hour < 12) 
+                {
+                    greetingHeader.innerText = "Good Morning! Welcome to Community Book Haven";
+
+                }
+                else if (hour < 18) 
+                {
+                    greetingHeader.innerText = "Good Afternoon! Welcome To Community Book Haven";
+                }
+
+                else 
+                {
+                    greetingHeader.innerText = "Good Evening! Welcome to Community  Book Haven";
+
+                }
+            }
+
+            setDynamicGreeting();
+
+            function toggleRegistrationForm()
+            {
+                const registrationForm = document.getElementById("registration_form");
+                const wantToRegister = document.querySelector('input[name="want_to_register"]:checked').value;
+
+                if (wantToRegister == "yes")
+                {
+                    registrationForm.style.display = "block";
+
+                }
+
+                else
+                {
+                    registrationForm.style.display = "none";
+                    document.getElementById("registration_msg").innerText = "";
+                }
+
+            }
+
+            document.getElementById("registration_form"). onsubmit = function(event)
+            {
+                event.preventDefault();                                           //stops the page from refreshing and losing the message
+
+                let registrationName = document.getElementById("member_name").value;
+                document.getElementById("registration_msg").innerHTML = `Welcome to the Community Book Haven, ${registrationName}! Your optional registration card is ready! You are now an official member!`;
+                document.getElementById("registration_form").reset();
+
+            };
+
+        </script>
 
     </body>
 </html>
